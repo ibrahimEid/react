@@ -35,6 +35,7 @@ function EditEmployee(props) {
 					<form
 						onSubmit={(e)=>{
 							e.preventDefault()
+							handleClose()
 							props.updateEmployee(props.id,name, role)
 						}}
 						id='EditForm'

@@ -70,7 +70,13 @@ function App() {
 		},
 	]);
 	function updateEmployee(id, newName,newRole){
-		console.log(`Hi ${id}: name:${newName}, role:${newRole}`)
+		const updatedEmployees = employees.map((employee)=>{
+			if(employee.id=== id){
+				return {...employee, name:newName, role:newRole}
+			}
+			return employee
+		})
+		setEmployees(updatedEmployees)
 
 	}
 

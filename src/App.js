@@ -5,6 +5,7 @@ import { useState } from "react";
 import Employee from "./components/Employee";
 import AddEmployee from "./components/AddEmployee";
 import { v4 as uuidv4 } from "uuid";
+import EditEmployee from "./components/EditEmployee";
 
 function App() {
   const [employees, setEmployees] = useState([
@@ -99,6 +100,14 @@ function App() {
         <>
           <div className="flex flex-wrap">
             {employees.map((employee) => {
+              const editEmployee = (
+                <EditEmployee
+                  id={employee.id}
+                  name={employee.name}
+                  role={employee.role}
+                  updateEmployee={updateEmployee}
+                />
+              );
               return (
                 <Employee
                   key={employee.id}
@@ -106,7 +115,7 @@ function App() {
                   name={employee.name}
                   role={employee.role}
                   srcImage={employee.srcImage}
-                  updateEmployee={updateEmployee}
+                  editEmployee={editEmployee}
                 />
               );
             })}
@@ -115,7 +124,7 @@ function App() {
       ) : (
         <p>you can not see the Employee</p>
       )}
-      <AddEmployee newEmployee={newEmployee}/>
+      <AddEmployee newEmployee={newEmployee} />
     </div>
   );
 }
